@@ -1,0 +1,32 @@
+<html>
+<head>
+	<script type="text/javascript">
+		window.onload = function(){
+		    var canvas1 = document.getElementById("canvas1");
+		    var context1 = canvas1.getContext("2d");
+		    
+		    var grd1 = context1.createLinearGradient(0, 0, 0, 700);
+		    grd1.addColorStop(0, "rgba(256,0,0,0.7)");
+		    grd1.addColorStop(1, "transparent");
+		    context1.fillStyle = grd1;
+		    context1.fill();
+		    context1.fillRect(0, 0, 500, 700);
+		    
+		    var canvas2 = document.getElementById("canvas2");
+		    var context2 = canvas2.getContext("2d");
+		 
+		    var grd2 = context2.createRadialGradient(238, 150, 20, 338, 50, 300);
+		    // use rgba to keep total opacity
+		    grd2.addColorStop(0, "rgba(256,0,0,0.7)");
+		    grd2.addColorStop(1, "transparent");
+		    context2.fillStyle = grd2;
+		    context2.fill();
+		    context2.fillRect(0, 0, 500, 700);
+		};
+	</script>
+</head>
+<body style="background-color:#000">
+	<canvas id="canvas1" width="500px" height="700px"></canvas>
+	<canvas id="canvas2" width="500px" height="700px"></canvas>
+</body>
+</html>
