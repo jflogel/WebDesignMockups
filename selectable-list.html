@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<style type="text/css">
+			ul {
+				padding: 0;
+				list-style: none outside none;
+				border: 1px #000 dotted;
+				float: left;
+				margin: 0 10px 10px 0;
+				min-width: 100px;
+				min-height: 125px;
+			}
+			ul li {
+			}
+			ul li:hover {
+				cursor: pointer;
+				background-color: #eee;
+			}
+			div {
+				clear:both;	
+			}
+			ul li .action {
+				padding: 0 3px 0 0;	
+			}
+			#availableItems li:hover .action {
+				width: 20px;
+				background-image: url('imgs/addRemove.png');
+				background-position: 0 3;
+				background-repeat: no-repeat;
+				
+			}
+			#selectedItems li:hover .action {
+				width: 20px;
+				background-image: url('imgs/addRemove.png');
+				background-position: -22 3;
+				background-repeat: no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<form method="get">
+			<div>
+				<ul id="availableItems">
+					<li><img class="action" src="imgs/img_trans.png" width="20px" height="20px"/><span>item 1</span><input type="hidden" name="availableItem" value="1"/></li>
+					<li><img class="action" src="imgs/img_trans.png" width="20px" height="20px"/><span>item 2</span><input type="hidden" name="availableItem" value="2"/></li>
+					<li><img class="action" src="imgs/img_trans.png" width="20px" height="20px"/><span>item 3</span><input type="hidden" name="availableItem" value="3"/></li>
+					<li><img class="action" src="imgs/img_trans.png" width="20px" height="20px"/><span>item 4</span><input type="hidden" name="availableItem" value="4"/></li>
+				</ul>
+				<ul id="selectedItems">
+					<li><img class="action" src="imgs/img_trans.png" width="20px" height="20px"/><span>item 5</span><input type="hidden" name="selectedItem" value="5"/></li>
+					
+				</ul>
+			</div>
+			<div>
+				<input type="submit"/>
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+		
+		var availableItemAction = function() {  moveListItem($(this), '#selectedItems', 'selectedItem', selectedItemAction) }                                        
+		var selectedItemAction = function() { moveListItem($(this), '#availableItems', 'availableItem', availableItemAction) }
+		
+		function moveListItem(clickedElement, listIdToMoveElementTo, newElementInputName, onClickFunctionToAttach) {
+			var clickedListItem = clickedElement.clone()
+			clickedListItem.find('input').attr('name', newElementInputName)
+			clickedListItem.click(onClickFunctionToAttach)
+			$(listIdToMoveElementTo).append(clickedListItem)
+			clickedElement.remove()
+		}
+		
+		$('#availableItems li').click(availableItemAction)
+		$('#selectedItems li').click(selectedItemAction)
+	</script>
+</html>
