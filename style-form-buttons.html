@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function enableActions() {
+				var disabledElements = document.querySelectorAll('.buttonGroup input[disabled="disabled"]');
+				
+				for (var i=0; i < disabledElements.length; i++) {
+					disabledElements[i].disabled = false;
+				}
+			}
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				width: 1200px;
+				margin: auto;
+				font-family: times new roman;
+				font-size: 14px;
+				padding: 20px;
+				background-color: #DDDDDD;
+			}
+			input[type=submit] {
+				background-color: #1e90ff;
+				color: #ffffff;
+				padding: 7px;
+				width: 150px;
+				border: 0;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			input[type=submit]:hover {
+				background-color: #add8e6;	
+				color: #111111;
+			}
+			input[type=submit]:disabled {
+				background-color: #d3d3d3;
+				color: #778899;
+				cursor: auto;
+			}
+			#pdf {
+				float: left;
+				padding: 0 20px 0 0;
+			}
+			#processingMenu {
+				float: left;
+				padding: 0;
+			}
+			#processingMenu > :first-child {
+				padding: 0;
+				margin: 0;
+			}
+			#processingMenu > * {
+				padding: 10px 0;
+				margin: 10px 0 10px 25px;
+			}
+			.clear {
+				clear: both;	
+			}
+			ul {
+				list-style: none
+			}
+			.label {
+				display: inline-block;
+				text-align: right;
+				width: 105px;
+			}
+			.buttonGroup {
+				text-align:center;
+				background-color:#EEEEEE;
+				width: 190px;
+			}
+			.buttonGroup  input {
+				margin: 7px 0 0;
+			}
+			.buttonGroup input:first-child {
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pdf">
+			<object width="800" height="800" type="application/pdf" data="imgs/electronic-funds-transfer.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0" id="pdf_content">
+			    <embed src="imgs/electronic-funds-transfer.pdf" width="800" height="800">
+			  </object>
+		</div>
+		<div id="processingMenu">
+			<ul>
+				<li><span class="label">Account Number:</span> 111111111</li>
+				<li><span class="label">Workflow:</span> Unemployment</li>
+				<li><span class="label">Doc Date:</span> July 12, 2014</li>
+				<li><span class="label">Related Docs:</span> 
+					<ul style="display:inline-block; vertical-align:top;">
+						<li><a href="#">121 - Economic Deferment</a></li>
+						<li><a href="#">144 - Economic Deferment</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="buttonGroup">
+				<form onsubmit="return false;">
+					<input type="submit" value="Review" onclick="enableActions();"/><br/>
+					<input type="submit" value="Main Menu"/><br/>
+					<input type="submit" value="Route to Image"/>
+				</form>
+			</div>
+
+			<div class="buttonGroup">
+				<input type="submit" value="Button 1" disabled="disabled"/><br/>
+				<input type="submit" value="Button 2" disabled="disabled"/><br/>
+				<input type="submit" value="Button 3" disabled="disabled"/>
+			</div>
+			<div class="buttonGroup">
+				<form onsubmit="return false;">
+					<input type="checkbox" value="goToMainMenu" name="goToMainMenu" id="goToMainMenu" disabled="disabled"/> <label for="goToMainMenu">Go to Main Menu</label><br/>
+					<input type="submit" value="Complete" disabled="disabled"/><br/>
+					<input type="submit" value="Hold" disabled="disabled"/><br/>
+					<input type="submit" value="Pend" disabled="disabled"/><br/>
+					<input type="submit" value="Transfer" disabled="disabled"/>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div><br/>
+	</body>
+</html>
