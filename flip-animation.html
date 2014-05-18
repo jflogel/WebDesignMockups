@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/flip.css">
+		<style type='text/css'>
+			.flipOuterContainer {
+				color: #fff;
+			}
+			.flipOuterContainer, .front, .back {
+				width: 200px;
+				height: 50px;
+			}
+			.front, .back {
+				border: 1px solid #000;
+			}
+			.front {
+				background-color: #aaa;
+			}
+			.back {
+				background-color: #bbb;
+			}
+			.pad {
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='flipOuterContainer'>
+			<div class='flipInnerContainer'>
+				<div class='front pad'>
+					front side
+				</div>
+				<div class='back pad'>
+					back side!!!
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script type='text/javascript'>
+			$(function() {
+				$('.flipOuterContainer').on('click', function() {
+					$(this).toggleClass('flip');
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,6 +1,12 @@
 <html>
 	<head>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript">
+			$(function() {
+				$('input[name="Transfer"], input[name="Cancel"]').on('click', function() {
+					$('.flipOuterContainer').toggleClass('flip');
+				});
+			});
 			function enableActions() {
 				var disabledElements = document.querySelectorAll('.buttonGroup input[disabled="disabled"]');
 				
@@ -9,6 +15,7 @@
 				}
 			}
 		</script>
+		<link rel="stylesheet" type="text/css" href="css/flip.css">	
 		<style type="text/css">
 			* {
 				margin: 0;
@@ -52,9 +59,11 @@
 				padding: 0;
 				margin: 0;
 			}
-			#processingMenu > * {
-				padding: 10px 0;
+			#processingMenu > ul, .buttons, .backPanel {
 				margin: 10px 0 10px 25px;
+			}
+			#processingMenu > ul, .buttonGroup {
+				padding: 10px 0;
 			}
 			.clear {
 				clear: both;	
@@ -98,27 +107,39 @@
 					</ul>
 				</li>
 			</ul>
-			<div class="buttonGroup">
-				<form onsubmit="return false;">
-					<input type="submit" value="Review" onclick="enableActions();"/><br/>
-					<input type="submit" value="Main Menu"/><br/>
-					<input type="submit" value="Route to Image"/>
-				</form>
-			</div>
+			<div class='flipOuterContainer'>
+				<div class='flipInnerContainer'>
+					<div class='buttons front'>
+						<div class="buttonGroup">
+							<form onsubmit="return false;">
+								<input type="submit" value="Review" onclick="enableActions();"/><br/>
+								<input type="submit" value="Main Menu"/><br/>
+								<input type="submit" value="Route to Image"/>
+							</form>
+						</div>
 
-			<div class="buttonGroup">
-				<input type="submit" value="Button 1" disabled="disabled"/><br/>
-				<input type="submit" value="Button 2" disabled="disabled"/><br/>
-				<input type="submit" value="Button 3" disabled="disabled"/>
-			</div>
-			<div class="buttonGroup">
-				<form onsubmit="return false;">
-					<input type="checkbox" value="goToMainMenu" name="goToMainMenu" id="goToMainMenu" disabled="disabled"/> <label for="goToMainMenu">Go to Main Menu</label><br/>
-					<input type="submit" value="Complete" disabled="disabled"/><br/>
-					<input type="submit" value="Hold" disabled="disabled"/><br/>
-					<input type="submit" value="Pend" disabled="disabled"/><br/>
-					<input type="submit" value="Transfer" disabled="disabled"/>
-				</form>
+						<div class="buttonGroup">
+							<input type="submit" value="Button 1" disabled="disabled"/><br/>
+							<input type="submit" value="Button 2" disabled="disabled"/><br/>
+							<input type="submit" value="Button 3" disabled="disabled"/>
+						</div>
+						<div class="buttonGroup">
+							<form onsubmit="return false;">
+								<input type="checkbox" value="goToMainMenu" name="goToMainMenu" id="goToMainMenu" disabled="disabled"/> <label for="goToMainMenu">Go to Main Menu</label><br/>
+								<input type="submit" value="Complete" disabled="disabled"/><br/>
+								<input type="submit" value="Hold" disabled="disabled"/><br/>
+								<input type="submit" value="Pend" disabled="disabled"/><br/>
+								<input type="submit" name='Transfer' value="Transfer" disabled="disabled"/>
+							</form>
+						</div>
+					</div>
+					<div class='backPanel back'>
+						<div class="buttonGroup">
+							<input type="submit" value="Save"/><br/>
+							<input type="submit" name="Cancel" value="Cancel"/><br/>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="clear"></div><br/>
