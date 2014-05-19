@@ -3,10 +3,20 @@
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
-				$('input[name="Transfer"], input[name="Cancel"]').on('click', function() {
-					$('.flipOuterContainer').toggleClass('flip');
+				$('.flipPage').on('click', function() {
+					$.ajax({
+						url: $(this).attr('name') + '.html',
+						dataType: 'html'})
+					  .done(function(html) {
+					  	$('.updatePanel').html(html);
+					  	$('input[name="Cancel"]').on('click', flipContent);
+						flipContent();
+					  });
 				});
 			});
+			var flipContent = function () {
+				$('.flipOuterContainer').toggleClass('flip');
+			}
 			function enableActions() {
 				var disabledElements = document.querySelectorAll('.buttonGroup input[disabled="disabled"]');
 				
@@ -58,7 +68,7 @@
 				padding: 0;
 				margin: 0;
 			}
-			#processingMenu > ul, .buttons, .backPanel {
+			#processingMenu > ul, .buttons, .updatePanel {
 				margin: 10px 0 10px 25px;
 			}
 			#processingMenu > ul, .buttonGroup {
@@ -129,16 +139,16 @@
 								<input type="checkbox" value="goToMainMenu" name="goToMainMenu" id="goToMainMenu" disabled="disabled"/> <label for="goToMainMenu">Go to Main Menu</label><br/>
 								<input type="submit" value="Complete" disabled="disabled"/><br/>
 								<input type="submit" value="Hold" disabled="disabled"/><br/>
-								<input type="submit" value="Pend" disabled="disabled"/><br/>
-								<input type="submit" name='Transfer' value="Transfer" disabled="disabled"/>
+								<input type="submit" name='pend' value="Pend" disabled="disabled" class='flipPage'/><br/>
+								<input type="submit" name='transfer' value="Transfer" disabled="disabled" class='flipPage'/>
 							</form>
 						</div>
 					</div>
-					<div class='backPanel back'>
-						<div class="buttonGroup">
+					<div class='updatePanel back'>
+						<!-- <div class="buttonGroup">
 							<input type="submit" value="Save"/><br/>
 							<input type="submit" name="Cancel" value="Cancel"/><br/>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
