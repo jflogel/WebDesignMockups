@@ -13,10 +13,6 @@
 	-webkit-transform: rotateY(0deg);
 	z-index: 3;
 }
-.flipOuterContainer, .front, .back {
-	width: 200px;
-	height: 50px;
-}
 .flipInnerContainer {
 	transform-style: preserve-3d;
 	-webkit-transform-style: preserve3d;
@@ -25,6 +21,7 @@
 }
 .front, .back {
 	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 	transform-style: preserve-3d;
 	-webkit-transform-style: preserve3d;
 	transition: all 0.4s ease-in-out 0s;
